@@ -96,7 +96,7 @@ for list_mo in re.finditer(r'<a\s+(?:[a-z]+="[^"]*"\s+)*href="(?:http://www.parl
     title = None
   
   # Constituency
-  constituency_mo = re.search(r'<label [^>]*>Constituency</label>\s+<p>([^<]+)</p>', mp_page, re.DOTALL)
+  constituency_mo = re.search(r'<label [^>]*>Constituency</label>', mp_page, re.DOTALL)
   if not constituency_mo:
     logging.error("Could not find constituency for %s", mp_url)
     continue
