@@ -103,14 +103,14 @@ for list_mo in re.finditer(r'<a\s+(?:[a-z]+="[^"]*"\s+)*href="(?:http://www.parl
   constituency = constituency_mo.group(1)
   
   # Party
-  party_mo = re.search(r'<h3[^>]*>Party</h3>\s+<p>([^<]+)</p>', mp_page, re.DOTALL)
+  party_mo = re.search(r'<label[^>]*>Party</label>\s+<div([^<]+)</div>', mp_page, re.DOTALL)
   if not party_mo:
     logging.error("Could not find party for %s", mp_url)
     continue
   party = party_mo.group(1)
   
   # How to address the MP in question, e.g. "Lady Herman", "Mr Bercow", "Prime Minister"
-  address_as_mo = re.search(r'<h3[^>]*>Address as</h3>\s+<p>([^<]+)</p>', mp_page, re.DOTALL)
+  address_as_mo = re.search(r'<label[^>]*>Address as</label>\s+<div([^<]+)</div>', mp_page, re.DOTALL)
   if not address_as_mo:
     logging.error('Could not find "Address as" for %s', mp_url)
     continue
